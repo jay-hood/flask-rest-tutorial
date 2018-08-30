@@ -12,3 +12,6 @@ venv.bak/
 
 # Databases
 .db
+
+# Cache
+.pyc
