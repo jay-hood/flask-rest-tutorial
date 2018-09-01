@@ -1,4 +1,3 @@
-import sqlite3
 from db import db
 
 
@@ -25,3 +24,10 @@ class UserModel(db.Model):
     @classmethod
     def find_by_id(cls, id_):
         return cls.query.filter_by(id=id_).first()
+
+    def json(self):
+        return {'id': self.id, 'username': self.username}
+
+    def delete_from_db(self):
+        db.session.delete(self)
+        db.session.commit()

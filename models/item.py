@@ -19,6 +19,10 @@ class ItemModel(db.Model):
         return cls.query.filter_by(name=name).first()
     #     above returns a class object of type ItemModel. Just have to invoke cls(...)
 
+    @classmethod
+    def find_all(cls):
+        return cls.query.all()
+
     def save_to_db(self):
         db.session.add(self)
         db.session.commit()
@@ -28,4 +32,4 @@ class ItemModel(db.Model):
         db.session.commit()
 
     def json(self):
-        return {'name': self.name, 'price': self.price}
+        return {'id': self.id, 'name': self.name, 'price': self.price, 'store_id': self.store_id}
